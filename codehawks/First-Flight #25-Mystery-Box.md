@@ -1,7 +1,7 @@
 # First Flight #25: Mystery Box - Findings Report
 
 ## Contest Summary
-Date: October 10th 2024
+Date: October 25th 2024
 
 ## GitHub Links
 https://github.com/Cyfrin/2024-09-mystery-box
