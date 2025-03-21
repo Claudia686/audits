@@ -14,7 +14,7 @@ https://github.com/Cyfrin/2024-09-mystery-box
 ## Risk Findings
 1. Low-01: Inconsistent Array Element Removal in `transferReward`, and `claimSingleReward`
 
-## Sumary
+## Summary
 The `transferReward`, and `claimSingleReward` functions incorrectly handle array removal. Specifically, the `delete` keyword is used in a way that leaves empty slots in the array or fails to fully remove elements. This results in gaps that can cause inefficiencies or mislead users about the true state of their rewards.
 
 ## Vulnerability Details
@@ -89,7 +89,7 @@ function claimSingleReward(uint256 _index) public {
 ## Risk Findings
 2. Low-02:
 
-## Sumary
+## Summary
 Incorrect Index validation in `claimSingleReward()`:
 
 ## Vulnerability Details

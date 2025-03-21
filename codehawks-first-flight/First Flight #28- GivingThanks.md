@@ -14,7 +14,7 @@ https://github.com/Cyfrin/2024-11-giving-thanks
 ## Risk Findings
 1. Medium-1: Constructor incorrect registry address
 
-## Sumary
+## Summary
 The constructor `registry address` is set to `CharityRegistry(msg.sender`) which assigs to deployer address instead of registry address.
 
 ## Vulnerability Details
@@ -31,7 +31,7 @@ Any calls to `registry` is interacting with deployer address not with registry a
  ## Tools Used
  Manual review
 
- ## Recomandations
+ ## Recommendations
  Change (msg.sender) to (_registry).
 ```
 constructor(address _registry) ERC721("DonationReceipt", "DRC") {
@@ -49,7 +49,7 @@ https://codehawks.cyfrin.io/c/2024-11-giving-thanks/s/57
 ## Risk Findings
 2. High-1:
 
-## Sumary
+## Summary
 Access Control on updateRegistry()
 
 ## Vulnerability Details
@@ -67,7 +67,7 @@ ETH won't be donated to registry address as intended.
  ## Tools Used
  Manual review
 
- ## Recomandations
+ ## Recommendations
  Add restriction to the function, `onlyOwner`.
 
 ```
@@ -84,7 +84,7 @@ https://codehawks.cyfrin.io/c/2024-11-giving-thanks/s/58
 ## Risk Findings
 3. Low-1:
 
-## Sumary
+## Summary
 Zero value check in donate(), GivingThanks.sol
 
 ## Vulnerability Details
@@ -111,7 +111,7 @@ If users repeatedly calls donate function with zero value it can increase gas, 
  ## Tools Used
  Manual review
 
- ## Recomandations
+ ## Recommendations
  Add a require to check for zero value.
 ```
  require(msg.value > 0, "Donation amount must be greater than zero");

@@ -3,7 +3,7 @@
 ## Contest Summary
 Date: December 20th 2024
 
-## GitHub Links
+## GitHub Link
 https://github.com/Cyfrin/2024-12-christmas-dinner/blob/main/src/ChristmasDinner.sol
 
 ## Results Summary
@@ -14,7 +14,7 @@ https://github.com/Cyfrin/2024-12-christmas-dinner/blob/main/src/ChristmasDinner
 ## Risk Findings
 1. High-01: Incorrect veriable handled within modifier.
 
-## Sumary 
+## Summary 
 The value of `locked` is set to `false` after the function code_ is executed, this create an opportuni for a re-entrancy attack. After the function code is executed, the `locked = false;` is executed, which means the `locked` flag is reset after the function code completes.
 
 ## Vulnerability Details
@@ -36,7 +36,7 @@ Scenario:
  ## Tools Used
  Manual review
 
- ## Recomandations
+ ## Recommendations
  Set`locked`to true before executing the function.
  ```solidity
   modifier nonReentrant() {
@@ -46,8 +46,5 @@ Scenario:
         locked = false;
  }
  ```
-
- ---
-
  ## Submission Link
  https://codehawks.cyfrin.io/c/2024-12-christmas-dinner/s/124

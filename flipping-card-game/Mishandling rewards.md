@@ -11,7 +11,7 @@ Date: October 15th 2024
 ## Risk Findings
 High-01. Unauthorized rewards
 
-## Sumary
+## Summary
 The `DistributePrize` function is vulnerable due to missing validation checks, which could allow unauthorized users to repeatedly claim rewards. This can lead to theft of funds, as unauthorized users could drain the prize pool meant for legitimate winners.
 
 ## Vulnerability Details
@@ -68,7 +68,7 @@ If the prize pool isn’t updated or marked as distributed, it could be complete
  ## Tools Used
  Sublime, Hardhat
 
-## Recomandations
+## Recommendations
 Introduce a new mapping to track whether a prize has been claimed for each game: 
 - mapping(`uint256` => mapping(`address` => `bool`)) public `distributor`;
 

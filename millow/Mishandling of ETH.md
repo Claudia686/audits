@@ -11,7 +11,7 @@ Date: April 20th 2024
 ## Risk Findings
 High-01. Unauthorized withdrawals
 
-## Sumary
+## Summary
 The cancelSale function allows unauthorized ETH withdrawals due to the absence of a mechanism to track who deposited funds, potentially leading to loss of funds.
 
 ## Vulnerability Details
@@ -103,7 +103,7 @@ function finalizeSale(uint256 _nftID) public {
  ## Tools Used
  Sublime, Hardhat
 
-## Recomandations
+## Recommendations
 Add a new mapping: 
 - mapping(`address` => `uint256`) public `deposited`
 

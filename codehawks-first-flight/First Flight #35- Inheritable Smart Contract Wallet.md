@@ -1,20 +1,23 @@
-# Contest Summary
+# First Flight #35: Inheritable Smart Contract Wallet - Findings Report
+
+## Contest Summary
 Date March 20th 2025
 
-# Github Link  https://github.com/CodeHawks-Contests/2025-03-inheritable-smart-contract-wallet
+## Github Link  
+https://github.com/CodeHawks-Contests/2025-03-inheritable-smart-contract-wallet
 
-# Result Summary
+## Result Summary
 - High: 2
 - Medium: 0
 - Low: 0
 
-# Risk Findings
+## Risk Findings
 1. High-1: The slot mismatch (tload(1), tstore(0, 1)) in modifier nonReentrant, InheritanceManager.sol
  
- # Summary
+ ## Summary
  Slot mismatch due to incorrect use of (`tload(1)`, `tstore(0, 1)`)
 
-# Vulnerability Details
+## Vulnerability Details
 
 The original code has a slot mismatch (`tload(1)`, `tstore(0, 1)`) which is incorrect, and use different slot.
 This means the check doesn't properly detect reentrancy, same slot must be used for checking and storing.
@@ -43,8 +46,6 @@ Manual review
 
 ## Recommendations
 
-
-
 ```JavaScript 
 modifier nonReentrant() {
         assembly {
@@ -59,20 +60,22 @@ modifier nonReentrant() {
 ```
 
 
-# Submission Link https://codehawks.cyfrin.io/c/2025-03-inheritable-smart-contract-wallet/s/174
+## Submission Link 
+https://codehawks.cyfrin.io/c/2025-03-inheritable-smart-contract-wallet/s/174
 
 
 
-# Risk Findings
+
+## Risk Findings
 2. High-2: 
  
- # Summary
+ ## Summary
  The `buyOutEstateNFT` function contains a critical issue in the following line:
 ```JavaScript
 uint256 multiplier = beneficiaries.length - 1;
 ```
 
-# Vulnerability Details
+## Vulnerability Details
 If `beneficiaries.length` is 1, then `multiplier = 1 - 1 = 0`, which means the `finalAmount` will always be `0`, leading to no funds being transferred.
 
 ```JavaScript
@@ -121,4 +124,5 @@ Manual review
     }
 ```
 
-# Submission Link https://codehawks.cyfrin.io/c/2025-03-inheritable-smart-contract-wallet/s/187
+## Submission Link 
+https://codehawks.cyfrin.io/c/2025-03-inheritable-smart-contract-wallet/s/187
