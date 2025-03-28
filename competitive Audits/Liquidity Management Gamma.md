@@ -17,65 +17,38 @@ https://github.com/CodeHawks-Contests/2025-02-gamma
  
 
 ## Risk Findings
-Low-1: The `setPerpVault` function uses `tx.origin` for authorization.
+Low-1: Incorrect Price Validation for LongToken in _validatePrice(), KeeperProxy.sol
 
  
 ## Summary
-Dangerous usage of tx.origin in setPerpVault(), GmxProxy.sol.
+The _validatePrice function contains a mistake in price validation for the longToken.
 
- 
 
 ## Vulnerability Details
-The `tx.origin`based protection can be abused by a malicious contract, `tx.origin` refers to the original external account that initiated the transaction, not the immediate caller `msg.sender`.     
-
-A malicious smart contract can trick a legitimate user into interacting with `setPerpVault()`, bypassing the security checks, and could gain control over `perpVault`.
-
- 
+In the `_validatePrice` function, the following lines are checking the price of the longToken against the `indexTokenPrice` values:
 
 ``` Javascript
-
-function setPerpVault(address _perpVault, address market) external {
-
-    require(tx.origin == owner(), "not owner");
-
-    require(_perpVault != address(0), "zero address");
-
-    require(perpVault == address(0), "already set");
-
-    perpVault = _perpVault;
-
-    gExchangeRouter.setSavedCallbackContract(market, address(this));
-
-}
-
+    _check(marketData.longToken, prices.indexTokenPrice.min); 
+    _check(marketData.longToken, prices.indexTokenPrice.max); 
 ```
 
 ## Impact
-* Unauthorized Contract ownership change
+Incorrect Price Validation: The mistake can result in the system comparing the wrong price range for the longToken.
 
-* Contract manipulation
-
-* Loss of funds
-
- 
 
 ## Tools Used
 Manual review
 
- 
 
 ## Recommendations
-Do not use `tx.origin` for authorization.    
+The correct code should be:
 
-```diff
-
-- require(tx.origin == owner(), "not owner");
-
-+ require(msg.sender == owner(), "not owner");
-
+``` Javascript
+    _check(marketData.longToken, prices.longToken.min);
+    _check(marketData.longToken, prices.longToken.max);  
 ```
 
 ## Submission Link
-https://codehawks.cyfrin.io/c/2025-02-gamma/s/208
+https://codehawks.cyfrin.io/c/2025-02-gamma/s/416
 
  
