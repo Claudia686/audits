@@ -64,8 +64,6 @@ modifier nonReentrant() {
 https://codehawks.cyfrin.io/c/2025-03-inheritable-smart-contract-wallet/s/174
 
 
-
-
 ## Risk Findings
 2. High-2: 
  
