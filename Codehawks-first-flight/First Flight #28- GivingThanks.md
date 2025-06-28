@@ -1,7 +1,7 @@
 # First Flight #28: GivingThanks - Findings Report
 
 ## Contest Summary
-Date: November 22th 2024
+Date: November 22nd 2024
 
 ## GitHub Link
 https://github.com/Cyfrin/2024-11-giving-thanks
