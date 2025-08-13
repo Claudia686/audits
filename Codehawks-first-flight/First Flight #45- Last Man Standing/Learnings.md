@@ -1,4 +1,4 @@
-# Learnings from First Flight #45: OrdeLast Man Standing
+# Learnings from First Flight #45: Last Man Standing
 
 ## Date: August 13, 2025
 
